@@ -27,4 +27,4 @@ jobs:
 
     - name: 🧪 Run tests
       run: |
-        pytest Technical_Test/test.py
+        pytest Technical_Test/
