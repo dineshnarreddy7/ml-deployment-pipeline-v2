@@ -1,18 +1,18 @@
-# Use official Python image
-FROM python:3.12-slim
+# Use the official Python base image
+FROM python:3.9-slim
 
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
-# Copy requirements and install
+# Copy the requirements file and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the app
+# Copy the entire app
 COPY . .
 
-# Expose FastAPI default port
+# Expose port for uvicorn
 EXPOSE 8000
 
-# Run the API using Uvicorn
+# Command to run the API with uvicorn
 CMD ["uvicorn", "serving.main:app", "--host", "0.0.0.0", "--port", "8000"]

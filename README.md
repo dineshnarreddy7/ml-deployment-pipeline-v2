@@ -106,13 +106,3 @@ docker run -p 8000:8000 ml-deployment-app
 This test project is for educational/demo purposes only.
 
 ````
-
----
-
-✅ Once you’ve **replaced the entire content in `README.md` with this**, save the file, and then run these commands in your terminal:
-
-```bash
-git add README.md
-git commit -m "Final README added with setup, Docker, and license"
-git push
-````
