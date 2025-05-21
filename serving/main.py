@@ -1,11 +1,23 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from threading import Thread
 import time
+import logging
 
 from transformers import pipeline
 
 app = FastAPI()
+
+# Basic logging config
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("ml-api")
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    logger.info(f"📥 Incoming request: {request.method} {request.url}")
+    response = await call_next(request)
+    logger.info(f"📤 Response status: {response.status_code}")
+    return response
 
 # Global variables
 status = "NOT_DEPLOYED"
